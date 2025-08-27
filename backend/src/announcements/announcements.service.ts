@@ -9,26 +9,21 @@ import { UpdateAnnouncementDto } from './dto/update-announcement.dto';
 export class AnnouncementsService {
   constructor(
     @InjectModel(Announcement.name) 
-    private announcementModel: Model<AnnouncementDocument>
+    private announcementModel: Model<Announcement>
   ) {}
 
   async create(createAnnouncementDto: CreateAnnouncementDto): Promise<Announcement> {
-    const createdAnnouncement = new this.announcementModel({
-      ...createAnnouncementDto,
-      date: createAnnouncementDto.date || new Date(),
-    });
-    return createdAnnouncement.save();
+    return this.announcementModel.create(createAnnouncementDto);
   }
 
   async findAll(): Promise<Announcement[]> {
-    return this.announcementModel.find().sort({ date: -1 }).exec();
+    return this.announcementModel.find().sort({ createdAt : -1 }).exec();
   }
 
   async findOne(id: string): Promise<Announcement> {
     const announcement = await this.announcementModel.findById(id).exec();
-    if (!announcement) {
-      throw new NotFoundException(`Announcement with ID ${id} not found`);
-    }
+    if (!announcement) throw new NotFoundException(`Announcement with ID ${id} not found`);
+  
     return announcement;
   }
 
@@ -37,17 +32,15 @@ export class AnnouncementsService {
       .findByIdAndUpdate(id, updateAnnouncementDto, { new: true })
       .exec();
     
-    if (!updatedAnnouncement) {
-      throw new NotFoundException(`Announcement with ID ${id} not found`);
-    }
+    if (!updatedAnnouncement) throw new NotFoundException(`Announcement with ID ${id} not found`);
+  
     return updatedAnnouncement;
   }
 
   async remove(id: string): Promise<void> {
     const result = await this.announcementModel.findByIdAndDelete(id).exec();
-    if (!result) {
-      throw new NotFoundException(`Announcement with ID ${id} not found`);
-    }
+    if (!result) throw new NotFoundException(`Announcement with ID ${id} not found`);
+    
   }
 
 }

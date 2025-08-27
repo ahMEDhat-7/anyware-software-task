@@ -8,11 +8,9 @@ export class CreateAnnouncementDto {
   @IsString()
   content: string;
 
-  @ApiPropertyOptional({ description: 'Announcement date' })
-  @IsOptional()
-  @Type(() => Date)
-  @IsDate()
-  date?: Date;
+  @ApiPropertyOptional({ description: 'Announcement topic' })
+  @IsString()
+  topic: string;
 
   @ApiProperty({ description: 'Author name' })
   @IsString()

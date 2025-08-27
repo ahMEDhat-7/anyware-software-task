@@ -50,13 +50,6 @@ export class QuizzesController {
     return this.quizzesProvider.findUpcoming();
   }
 
-  @Get('completed')
-  @ApiOperation({ summary: 'Get completed quizzes' })
-  @ApiResponse({ status: 200, description: 'List of completed quizzes' })
-  findCompleted() {
-    return this.quizzesProvider.findCompleted();
-  }
-
   @Get(':id')
   @ApiOperation({ summary: 'Get a quiz by ID' })
   @ApiParam({ name: 'id', description: 'Quiz ID' })

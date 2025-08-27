@@ -6,23 +6,13 @@ import { Quiz } from "./entities/quiz.schema";
 
 
 @Injectable()
-export class QuizzesProvider{
-  constructor(@InjectModel(Quiz.name) private quizModel: Model<Quiz>) {}
-     async findUpcoming(): Promise<Quiz[]> {
+export class QuizzesProvider {
+  constructor(@InjectModel(Quiz.name) private quizModel: Model<Quiz>) { }
+  async findUpcoming(): Promise<Quiz[]> {
     const currentDate = new Date();
     return this.quizModel
-      .find({ 
-        dueDate: { $gte: currentDate }, 
-        completed: false 
-      })
+      .find({ dueDate: { $gte: currentDate } })
       .sort({ dueDate: 1 })
-      .exec();
-  }
-
-  async findCompleted(): Promise<Quiz[]> {
-    return this.quizModel
-      .find({ completed: true })
-      .sort({ updatedAt: -1 })
       .exec();
   }
 }

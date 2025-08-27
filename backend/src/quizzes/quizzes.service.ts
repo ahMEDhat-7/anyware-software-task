@@ -20,9 +20,7 @@ export class QuizzesService {
 
   async findOne(id: string): Promise<Quiz> {
     const quiz = await this.quizModel.findById(id).exec();
-    if (!quiz) {
-      throw new NotFoundException(`Quiz with ID ${id} not found`);
-    }
+    if (!quiz) throw new NotFoundException(`Quiz with ID ${id} not found`);
     return quiz;
   }
 
@@ -30,18 +28,14 @@ export class QuizzesService {
     const updatedQuiz = await this.quizModel
       .findByIdAndUpdate(id, updateQuizDto, { new: true })
       .exec();
-    
-    if (!updatedQuiz) {
-      throw new NotFoundException(`Quiz with ID ${id} not found`);
-    }
+      
+    if (!updatedQuiz) throw new NotFoundException(`Quiz with ID ${id} not found`);
     return updatedQuiz;
   }
 
   async remove(id: string): Promise<void> {
     const result = await this.quizModel.findByIdAndDelete(id).exec();
-    if (!result) {
-      throw new NotFoundException(`Quiz with ID ${id} not found`);
-    }
+    if (!result) throw new NotFoundException(`Quiz with ID ${id} not found`);
   }
 
   

@@ -5,20 +5,20 @@ export type AnnouncementDocument = HydratedDocument<Announcement>;
 
 @Schema({ timestamps: true })
 export class Announcement {
-  @Prop({ required: true })
-  content: string;
+    @Prop({ required: true })
+    topic: string;
 
-  @Prop({ default: Date.now })
-  date: Date;
+    @Prop({ required: true })
+    content: string;
 
-  @Prop({ required: true })
-  author: string;
+    @Prop({ required: true })
+    author: string;
 
-  @Prop({ default: Date.now })
-  createdAt: Date;
+    @Prop({ default: Date.now })
+    createdAt: Date;
 
-  @Prop({ default: Date.now })
-  updatedAt: Date;
+    @Prop({ default: Date.now })
+    updatedAt: Date;
 }
 
 export const AnnouncementSchema = SchemaFactory.createForClass(Announcement);
