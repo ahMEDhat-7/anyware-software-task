@@ -1,26 +1,53 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Announcement, AnnouncementDocument } from './entities/announcement.schema';
 import { CreateAnnouncementDto } from './dto/create-announcement.dto';
 import { UpdateAnnouncementDto } from './dto/update-announcement.dto';
 
 @Injectable()
 export class AnnouncementsService {
-  create(createAnnouncementDto: CreateAnnouncementDto) {
-    return 'This action adds a new announcement';
+  constructor(
+    @InjectModel(Announcement.name) 
+    private announcementModel: Model<AnnouncementDocument>
+  ) {}
+
+  async create(createAnnouncementDto: CreateAnnouncementDto): Promise<Announcement> {
+    const createdAnnouncement = new this.announcementModel({
+      ...createAnnouncementDto,
+      date: createAnnouncementDto.date || new Date(),
+    });
+    return createdAnnouncement.save();
   }
 
-  findAll() {
-    return `This action returns all announcements`;
+  async findAll(): Promise<Announcement[]> {
+    return this.announcementModel.find().sort({ date: -1 }).exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} announcement`;
+  async findOne(id: string): Promise<Announcement> {
+    const announcement = await this.announcementModel.findById(id).exec();
+    if (!announcement) {
+      throw new NotFoundException(`Announcement with ID ${id} not found`);
+    }
+    return announcement;
   }
 
-  update(id: number, updateAnnouncementDto: UpdateAnnouncementDto) {
-    return `This action updates a #${id} announcement`;
+  async update(id: string, updateAnnouncementDto: UpdateAnnouncementDto): Promise<Announcement> {
+    const updatedAnnouncement = await this.announcementModel
+      .findByIdAndUpdate(id, updateAnnouncementDto, { new: true })
+      .exec();
+    
+    if (!updatedAnnouncement) {
+      throw new NotFoundException(`Announcement with ID ${id} not found`);
+    }
+    return updatedAnnouncement;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} announcement`;
+  async remove(id: string): Promise<void> {
+    const result = await this.announcementModel.findByIdAndDelete(id).exec();
+    if (!result) {
+      throw new NotFoundException(`Announcement with ID ${id} not found`);
+    }
   }
+
 }
