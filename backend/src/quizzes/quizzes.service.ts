@@ -1,26 +1,48 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Quiz } from './entities/quiz.schema';
 import { CreateQuizDto } from './dto/create-quiz.dto';
 import { UpdateQuizDto } from './dto/update-quiz.dto';
 
 @Injectable()
 export class QuizzesService {
-  create(createQuizDto: CreateQuizDto) {
-    return 'This action adds a new quiz';
+  constructor(@InjectModel(Quiz.name) private quizModel: Model<Quiz>) {}
+
+  async create(createQuizDto: CreateQuizDto): Promise<Quiz> {
+    const createdQuiz = new this.quizModel(createQuizDto);
+    return createdQuiz.save();
   }
 
-  findAll() {
-    return `This action returns all quizzes`;
+  async findAll(): Promise<Quiz[]> {
+    return this.quizModel.find().sort({ createdAt: -1 }).exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} quiz`;
+  async findOne(id: string): Promise<Quiz> {
+    const quiz = await this.quizModel.findById(id).exec();
+    if (!quiz) {
+      throw new NotFoundException(`Quiz with ID ${id} not found`);
+    }
+    return quiz;
   }
 
-  update(id: number, updateQuizDto: UpdateQuizDto) {
-    return `This action updates a #${id} quiz`;
+  async update(id: string, updateQuizDto: UpdateQuizDto): Promise<Quiz> {
+    const updatedQuiz = await this.quizModel
+      .findByIdAndUpdate(id, updateQuizDto, { new: true })
+      .exec();
+    
+    if (!updatedQuiz) {
+      throw new NotFoundException(`Quiz with ID ${id} not found`);
+    }
+    return updatedQuiz;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} quiz`;
+  async remove(id: string): Promise<void> {
+    const result = await this.quizModel.findByIdAndDelete(id).exec();
+    if (!result) {
+      throw new NotFoundException(`Quiz with ID ${id} not found`);
+    }
   }
+
+  
 }
