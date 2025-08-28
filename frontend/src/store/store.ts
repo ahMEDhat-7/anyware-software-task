@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { quizSlice } from './slices/quizzesSlice';
-import { announcementsSlice } from './slices/annaouncements.slice';
+import { quizSlice } from './slices/quizzes.Slice';
+import { announcementsSlice } from './slices/announcements.slice';
 
 export const store = configureStore({
   reducer: {

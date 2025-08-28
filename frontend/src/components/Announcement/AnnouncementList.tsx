@@ -1,32 +1,32 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectQuizzes, setQuizzes } from '../../store/slices/quizzes.Slice';
+import { selectAnnouncements, setAnnouncements } from '../../store/slices/announcements.slice';
 import { Box, Typography, List, Button, CircularProgress } from '@mui/material';
 import { useState, useEffect } from 'react';
-import { quizzesApi } from '../../api/quizzes';
-import QuizItem from './QuizItem';
+import { announcementsApi } from '../../api/announcements';
+import AnnouncementItem from './AnnouncementItem';
 
-function QuizList() {
+function AnnouncementList() {
     const dispatch = useDispatch();
-    const quizzes = useSelector(selectQuizzes);
+    const announcements = useSelector(selectAnnouncements);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchQuizzes = async () => {
+        const fetchAnnouncements = async () => {
             try {
                 setLoading(true);
                 setError(null);
-                const data = await quizzesApi.getAllUpComingQuizzes();
-                dispatch(setQuizzes(data));
+                const data = await announcementsApi.getALLRecentAnnouncements();
+                dispatch(setAnnouncements(data));
             } catch (err) {
-                setError(err instanceof Error ? err.message : 'Failed to fetch quizzes');
-                console.error('Error fetching quizzes:', err);
+                setError(err instanceof Error ? err.message : 'Failed to fetch announcements');
+                console.error('Error fetching announcements:', err);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchQuizzes();
+        fetchAnnouncements();
     }, [dispatch]);
 
 
@@ -35,7 +35,8 @@ function QuizList() {
             bgcolor: 'background.paper',
             borderRadius: 2,
             boxShadow: 1,
-             width:"25%",
+            width: "75%",
+            maxHeight:"100%",
             p: 2,
         }}>
             <Box sx={{
@@ -48,11 +49,13 @@ function QuizList() {
                     What's Due
                 </Typography>
                 <Button
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                >
-                    All
+                    variant="text"
+                    size="medium"
+                    sx={{
+                        color:"#",
+                        fontStyle:"bold"
+                    }}
+                >All
                 </Button>
             </Box>
 
@@ -68,9 +71,9 @@ function QuizList() {
                 <List sx={{
                     bgcolor: 'background.paper',
                 }}>
-                    {quizzes.slice(0,2).map((quiz, index) => {
+                    {announcements.slice(0, 2).map((Announcement, index) => {
                         return (
-                            <QuizItem key={index} quiz={quiz} />
+                            <AnnouncementItem key={index} announcement={Announcement} />
                         );
                     })}
                 </List>
@@ -79,4 +82,4 @@ function QuizList() {
     );
 }
 
-export default QuizList;
+export default AnnouncementList;
