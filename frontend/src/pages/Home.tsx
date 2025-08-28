@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Home() {
   const navigate = useNavigate();
-  const handleLogin = ()=>{
+  const handleLogin = () => {
     navigate('/dashboard');
   }
   return (
@@ -15,11 +15,11 @@ function Home() {
       justifyContent: 'center',
       bgcolor: '#f3f4f6'
     }}>
-      <Stack 
-        spacing={3} 
-        sx={{ 
-          p: 4, 
-          borderRadius: 2, 
+      <Stack
+        spacing={4}
+        sx={{
+          p: 4,
+          borderRadius: 2,
           bgcolor: 'white',
           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
           textAlign: 'center',
@@ -33,8 +33,8 @@ function Home() {
         <Typography variant="body1" color="text.secondary">
           Please log in to access this page
         </Typography>
-        <Button 
-          variant="contained" 
+        <Button
+          variant="contained"
           size="large"
           sx={{
             textTransform: 'none',
