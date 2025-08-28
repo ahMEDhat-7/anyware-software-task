@@ -14,13 +14,14 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MailIcon from '@mui/icons-material/Mail';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <AppBar position="absolute" color="primary" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1,width:"75%" ,left:"25%"}}>
+    <AppBar position="absolute" color="primary" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1,width:"75%" ,justifyContent:"space-around" ,height:"100px",left:"25%"}}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
         {/* Welcome message */}
         <Typography variant="h6" sx={{ flexGrow: 1,  display: isMobile ? "none" : "",}}>
@@ -43,7 +44,7 @@ const Header = () => {
         >
           <SearchIcon color="action" />
           <InputBase
-            placeholder="Search..."
+            placeholder="Search"
             fullWidth
             sx={{ ml: 1 }}
             inputProps={{ 'aria-label': 'search' }}
@@ -64,7 +65,7 @@ const Header = () => {
             </Badge>
           </IconButton>
 
-          <Avatar alt="User Avatar" src="/avatar.png" />
+          <Link to={"/profile"}><Avatar alt="User Avatar" src="https://i.pinimg.com/736x/e0/89/07/e089076d1d0467b110c8de292c5c5637.jpg" /></Link>
         </Box>
       </Toolbar>
     </AppBar>
