@@ -8,7 +8,11 @@ export const announcementsApi = {
         const response = await axios.get(`/api/announcements`);
         return response.data;
     },
-
+    // Get all recent announcements
+    getALLRecentAnnouncements: async () => {
+        const response = await axios.get(`/api/announcements/recent`);
+        return response.data;
+    },
     // Get a single Announcement by ID
     getAnnouncementById: async (id: string) => {
         const response = await axios.get(`/api/announcements/${id}`);
