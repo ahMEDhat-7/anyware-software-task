@@ -6,6 +6,9 @@ export type QuizDocument = HydratedDocument<Quiz>;
 @Schema({ timestamps: true })
 export class Quiz {
   @Prop({ required: true })
+  title: string;
+
+  @Prop({ required: true })
   topic: string;
 
   @Prop({ required: true })

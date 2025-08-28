@@ -21,7 +21,7 @@ const Header = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <AppBar position="absolute" color="primary" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1,width:"75%" ,justifyContent:"space-around" ,height:"100px",left:"25%"}}>
+    <AppBar position="absolute" color="primary" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1,width:"75%" ,justifyContent:"space-around" ,height:"80px",left:"25%"}}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
         {/* Welcome message */}
         <Typography variant="h6" sx={{ flexGrow: 1,  display: isMobile ? "none" : "",}}>

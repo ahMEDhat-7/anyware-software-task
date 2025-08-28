@@ -10,6 +10,7 @@ export interface SideBarLinkType {
 
 export interface QuizType {
     _id: string;
+    title: string;
     topic: string;
     course: string;
     dueDate: string;

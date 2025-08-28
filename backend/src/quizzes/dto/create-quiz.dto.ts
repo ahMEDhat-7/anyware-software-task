@@ -5,6 +5,10 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 export class CreateQuizDto {
   @ApiProperty({ description: 'Quiz title' })
   @IsString()
+  title: string;
+
+  @ApiProperty({ description: 'Quiz topic' })
+  @IsString()
   topic: string;
 
   @ApiProperty({ description: 'Quiz subject' })

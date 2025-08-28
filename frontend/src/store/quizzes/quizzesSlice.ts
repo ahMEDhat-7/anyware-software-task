@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { QuizState, QuizType } from '../../utils/types';
+import type { RootState } from '../store';
 
 const initialState: QuizState = {
   quizzes: [],
@@ -39,8 +40,8 @@ export const {
   clearQuizzes 
 } = quizSlice.actions;
 
-export const selectQuizzes = (state: { quiz: QuizState }) => state.quiz.quizzes;
-export const selectQuizById = (state: { quiz: QuizState }, index: number) => 
+export const selectQuizzes = (state: RootState) => state.quiz.quizzes;
+export const selectQuizById = (state: RootState, index: number) => 
   state.quiz.quizzes[index];
 
 export default quizSlice.reducer;
