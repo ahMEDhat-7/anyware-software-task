@@ -3,7 +3,7 @@ import type { QuizType } from '../../utils/types';
 
 function QuizItem({ quiz }: { quiz: QuizType }) {
     return (
-        <Card variant="outlined">
+        <Card variant="outlined" sx={{marginBottom:1}}>
             <CardContent>
                 <Box display="flex" flexDirection="column" gap={1}>
                     <Typography variant="h6" component="div" gutterBottom>
@@ -23,8 +23,6 @@ function QuizItem({ quiz }: { quiz: QuizType }) {
                         variant="outlined"
                         size="medium"
                         sx={{
-
-                            fontStyle: "bold",
                             width: "100%"
                         }}
                     >Start Quiz

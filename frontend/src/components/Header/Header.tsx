@@ -15,13 +15,18 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MailIcon from '@mui/icons-material/Mail';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectAnnouncements } from '../../store/slices/announcements.slice';
+import { selectQuizzes } from '../../store/slices/quizzes.Slice';
 
 const Header = () => {
+    const announcements = useSelector(selectAnnouncements);
+    const quizzes = useSelector(selectQuizzes);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <AppBar position="absolute" color="primary" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1,width:"75%" ,justifyContent:"space-around" ,height:"80px",left:"25%"}}>
+    <AppBar position="absolute" color='inherit' sx={{ zIndex: (theme) => theme.zIndex.drawer + 1,width:"75%" ,justifyContent:"space-around" ,left:"25%"}}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
         {/* Welcome message */}
         <Typography variant="h6" sx={{ flexGrow: 1,  display: isMobile ? "none" : "",}}>
@@ -33,7 +38,7 @@ const Header = () => {
           sx={{
             display: isMobile ? "none" : 'flex',
             alignItems: 'center',
-            backgroundColor: 'white',
+            backgroundColor: '',
             borderRadius: 1,
             px: 1,
             py: 0.5,
@@ -54,13 +59,13 @@ const Header = () => {
         {/* Icons & Avatar */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <IconButton color="inherit">
-            <Badge badgeContent={2} color="error">
+            <Badge badgeContent={announcements.length + quizzes.length } color="error">
               <NotificationsIcon />
             </Badge>
           </IconButton>
 
           <IconButton color="inherit">
-            <Badge badgeContent={7} color="error">
+            <Badge badgeContent={1} color="error">
               <MailIcon />
             </Badge>
           </IconButton>

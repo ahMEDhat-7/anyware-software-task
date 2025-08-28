@@ -35,9 +35,9 @@ function AnnouncementList() {
             bgcolor: 'background.paper',
             borderRadius: 2,
             boxShadow: 1,
-            width: "75%",
-            maxHeight:"100%",
+            width: "73%",
             p: 2,
+            marginRight:3
         }}>
             <Box sx={{
                 display: 'flex',
@@ -71,7 +71,7 @@ function AnnouncementList() {
                 <List sx={{
                     bgcolor: 'background.paper',
                 }}>
-                    {announcements.slice(0, 2).map((Announcement, index) => {
+                    {announcements.slice(0, 3).map((Announcement, index) => {
                         return (
                             <AnnouncementItem key={index} announcement={Announcement} />
                         );
