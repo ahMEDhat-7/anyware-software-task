@@ -11,11 +11,9 @@ function AnnouncementItem({ announcement }: { announcement: AnnouncementType }) 
                 <Typography variant="subtitle1" color="text.secondary">
                     {announcement.topic}
                 </Typography>
-                <Box mt={1}>
-                    <Typography variant="body2" color="text.secondary">
-                        {announcement.content}                    
-                    </Typography>
-                </Box>
+                <Typography variant="body2" color="text.secondary">
+                    {announcement.content}
+                </Typography>
             </CardContent>
         </Card>
     )
