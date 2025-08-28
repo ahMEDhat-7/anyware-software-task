@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectQuizzes, setQuizzes } from '../../store/quizzes/quizzesSlice';
+import { selectQuizzes, setQuizzes } from '../../store/slices/quizzesSlice';
 import { Box, Typography, List, Button, CircularProgress } from '@mui/material';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { useState, useEffect } from 'react';
-import { quizzesApi } from '../../services/quizzes.service';
+import { quizzesApi } from '../../api/quizzes';
 import QuizItem from './QuizItem';
 
 function QuizList() {
