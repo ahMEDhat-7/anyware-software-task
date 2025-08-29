@@ -30,7 +30,7 @@ function SideBar() {
                 justifyContent: "flex-start",
             }}
             role="presentation"
-            onClick={isMobile ? toggleDrawer(false) : undefined}
+            onClick={toggleDrawer(!isOpen)}
         >
             <Box
                 sx={{
@@ -67,26 +67,24 @@ function SideBar() {
             )}
 
             <Drawer
-    variant={isMobile ? "temporary" : "permanent"}
-    open={isMobile ? isOpen : true}
-    onClose={toggleDrawer(false)}
-    ModalProps={{
-        keepMounted: true, // Better mobile performance
-    }}
-    sx={{
-        zIndex: (theme) => theme.zIndex.modal + 1, // Ensure it's above everything else
-        "& .MuiDrawer-paper": {
-            width: isMobile ? "75%" : "25%",
-            background: "linear-gradient(to bottom, #0f2b69, #2a60ac)",
-            color: "#eaecf0",
-            boxShadow: "2px 0 5px rgba(0, 0, 0, 0.1)",
-            padding: "1.5rem 0",
-            overflowY: "auto",
-        },
-    }}
->
-    {drawerContent}
-</Drawer>
+                variant={isMobile ? "temporary" : "permanent"}
+                open={isMobile ? isOpen : true}
+                onClose={toggleDrawer(false)}
+               
+                sx={{
+                    zIndex: (theme) => theme.zIndex.modal + 1,
+                    "& .MuiDrawer-paper": {
+                        width: isMobile ? "75%" : "25%",
+                        background: "linear-gradient(to bottom, #0f2b69, #2a60ac)",
+                        color: "#eaecf0",
+                        boxShadow: "2px 0 5px rgba(0, 0, 0, 0.1)",
+                        padding: "1.5rem 0",
+                        overflowY: "auto",
+                    },
+                }}
+            >
+                {drawerContent}
+            </Drawer>
 
         </>
     );

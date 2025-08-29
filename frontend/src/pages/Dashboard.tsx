@@ -1,43 +1,43 @@
-import { Box, Container, Grid } from '@mui/material';
-import QuizList from '../components/Quiz/QuizList';
+import { Box, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import AnnouncementList from '../components/Announcement/AnnouncementList';
+import QuizList from '../components/Quiz/QuizList';
 import MiddleDetails from '../components/Middle/MiddleDetails';
 
 function Dashboard() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
-    <Container maxWidth="xl" sx={{
-      position: "absolute",
-      justifyItems: "center",
-      width: "75%",
-      left: "25%",
-      top:"10%"
-    }}>
-         
-
-
-      {/* Upper Middle Content */}
+    <Box
+      component="main"
+      sx={{
+        marginLeft: isMobile ? 0 : '25%',
+        width: isMobile ? '100%' : '75%',
+        padding: theme.spacing(3),
+        paddingTop: theme.spacing(10),
+      }}
+    >
       <MiddleDetails />
-
-      {/* Content Container */}
-      <Box sx={{
-        position: "relative",
-        width: "100%",
-        marginTop: 2,
-        p: 2,
-        bgcolor: 'background.paper',
-        borderRadius: 2,
-        boxShadow: 1,
-      }}>
-        {/* Two Column Layout */}
-        <Grid container spacing={3}  >
-          {/* Left Content */}
+      
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' },
+          gap: 3,
+          mt: 3
+        }}
+      >
+        <Box>
           <AnnouncementList />
-          {/* Right Content */}
-          <QuizList />
-        </Grid>
+        </Box>
+        <Box>
+          <QuizList/>
+        </Box>
       </Box>
-    </Container>
+    </Box>
   );
 }
+
 
 export default Dashboard;

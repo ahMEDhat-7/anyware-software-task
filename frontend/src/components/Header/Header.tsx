@@ -31,20 +31,24 @@ const Header = () => {
     <AppBar
       color="inherit"
       sx={{
-        zIndex: (theme) => theme.zIndex.drawer + 1,
-        width: { sm: '75%', md: '75%' }, 
-        ml: { xs: 0, md: '25%' },
+        width: { xs: '100%', sm: '75%' },
+        ml: { xs: 0, sm: '25%' },
         boxShadow: 1,
+        zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
     >
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexGrow: 1 }}>
+      <Toolbar sx={{ display: 'flex',flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', flexGrow: 1 }}>
           {!isMobile && (
             <Typography variant="h6" component="div">
-              Welcome, {user.username}!
+              Welcome, {user.username}
             </Typography>
           )}
 
+        </Box>
+
+        {/* Right side: Icons & Avatar */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           {!isMobile && (
             <Box
               sx={{
@@ -54,7 +58,7 @@ const Header = () => {
                 borderRadius: 2,
                 px: 1.5,
                 py: 0.5,
-                width: 250,
+                width: 200,
               }}
             >
               <SearchIcon color="action" />
@@ -66,10 +70,6 @@ const Header = () => {
               />
             </Box>
           )}
-        </Box>
-
-        {/* Right side: Icons & Avatar */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <IconButton color="inherit" aria-label="notifications">
             <Badge badgeContent={announcements.length + quizzes.length} color="error">
               <NotificationsIcon />

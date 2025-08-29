@@ -29,33 +29,33 @@ function AnnouncementList() {
         fetchAnnouncements();
     }, [dispatch]);
 
-
     return (
-        <Box sx={{
-            bgcolor: 'background.paper',
-            borderRadius: 2,
-            boxShadow: 1,
-            p: 2,
-            marginRight: 3
-        }}>
-            <Box sx={{
+        <Box
+            sx={{
+                bgcolor: 'background.paper',
+                borderRadius: 2,
+                boxShadow: 1,
+                p: 2,
+                height: '100%',
                 display: 'flex',
-                justifyContent:"space-between",
-                mb: 2
-            }}>
-                <Box>
-                    <Typography variant="h6" component="h2" color='#1e1e99'>
-                        Announcments
-                    </Typography>
-                    <Typography variant="subtitle1" component="p" color='#1e1e99'>
-                        This Section for Announcments
-                    </Typography>
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+            }}
+        >
+            <Box sx={{ mb: 2 }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box>
+                        <Typography variant="h6" component="h2" color="#1e1e99">
+                            Announcements
+                        </Typography>
+                        <Typography variant="subtitle2" component="p" color="#1e1e99">
+                            This Section for Announcements
+                        </Typography>
+                    </Box>
+                    <Button variant="text" size="small">
+                        All
+                    </Button>
                 </Box>
-                <Button
-                    variant="text"
-                    size="large">
-                    All
-                </Button>
             </Box>
 
             {loading ? (
@@ -67,14 +67,10 @@ function AnnouncementList() {
                     <Typography>{error}</Typography>
                 </Box>
             ) : (
-                <List sx={{
-                    bgcolor: 'background.paper',
-                }}>
-                    {announcements.slice(0, 3).map((announcement, index) => {
-                        return (
-                            <AnnouncementItem key={index} announcement={announcement} />
-                        );
-                    })}
+                <List>
+                    {announcements.slice(0, 3).map((announcement, index) => (
+                        <AnnouncementItem key={index} announcement={announcement} />
+                    ))}
                 </List>
             )}
         </Box>
