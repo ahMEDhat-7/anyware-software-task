@@ -9,6 +9,7 @@ import {
   Avatar,
   useMediaQuery,
   useTheme,
+  Button,
 } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
@@ -19,6 +20,8 @@ import { useSelector } from 'react-redux';
 import { selectAnnouncements } from '../../store/slices/announcements.slice';
 import { selectUser } from '../../store/slices/auth.slice';
 import { selectQuizzes } from '../../store/slices/quizzes.Slice';
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 const Header = () => {
   const announcements = useSelector(selectAnnouncements);
@@ -26,6 +29,13 @@ const Header = () => {
   const user = useSelector(selectUser);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [lang, setLang] = useState<string>("en");
+  const { i18n } = useTranslation();
+
+  const handleLang = () => {
+    i18n.changeLanguage(lang);
+    lang === "en" ? setLang("ar") : setLang("en");
+  }
 
   return (
     <AppBar
@@ -37,7 +47,7 @@ const Header = () => {
         zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
     >
-      <Toolbar sx={{ display: 'flex',flexWrap: 'wrap' }}>
+      <Toolbar sx={{ display: 'flex', flexWrap: 'wrap' }}>
         <Box sx={{ display: 'flex', flexGrow: 1 }}>
           {!isMobile && (
             <Typography variant="h6" component="div">
@@ -49,7 +59,10 @@ const Header = () => {
 
         {/* Right side: Icons & Avatar */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Button onClick={handleLang}>{lang}</Button>
+
           {!isMobile && (
+
             <Box
               sx={{
                 display: 'flex',

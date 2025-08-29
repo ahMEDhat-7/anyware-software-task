@@ -4,13 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { userApi } from "../api/auth";
 import { setUser } from "../store/slices/auth.slice";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const {t} = useTranslation();
+
   const handleLogin = async() => {
-    
       try {
         const data = await userApi.login();
         dispatch(setUser(data));
@@ -56,7 +58,7 @@ function Home() {
           }}
           onClick={handleLogin}
         >
-          Login to Continue
+          {t('Login to Continue')}
         </Button>
       </Stack>
     </Box>
