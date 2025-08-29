@@ -14,7 +14,6 @@ function Quiz() {
       sx={{
         marginLeft: isMobile ? 0 : "25%",
         width: isMobile ? "100%" : "75%",
-        padding: theme.spacing(3),
         paddingTop: theme.spacing(10),
       }}
     >
