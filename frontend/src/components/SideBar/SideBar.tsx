@@ -39,6 +39,7 @@ function SideBar() {
                     color: "#2563eb",
                     marginBottom: "2rem",
                     textAlign: "center",
+                    textDecoration:"none"
                 }}
                 component={Link}
                 to="/"

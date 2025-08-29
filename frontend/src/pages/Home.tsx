@@ -28,7 +28,8 @@ function Home() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      bgcolor: '#f3f4f6'
+      bgcolor: '#f3f4f6',
+    
     }}>
 
       <Stack
@@ -39,7 +40,6 @@ function Home() {
           bgcolor: 'white',
           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
           textAlign: 'center',
-          minWidth: 300
         }}
       >
         <PersonIcon sx={{ fontSize: 48, color: '#2563eb', margin: '0 auto' }} />

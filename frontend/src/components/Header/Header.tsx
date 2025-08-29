@@ -30,7 +30,7 @@ const Header = () => {
   const quizzes = useSelector(selectQuizzes);
   const user = useSelector(selectUser);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [lang, setLang] = useState<string>("en");
   const { t, i18n } = useTranslation();
 
@@ -66,13 +66,13 @@ const Header = () => {
         </Box>
 
         {/* Right side: Icons & Avatar */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box sx={{ display: 'flex', gap: 1 }}>
           <Button onClick={handleLang}>{lang}</Button>
 
           {user && (
             <>
 
-              {!isMobile && (
+              {!isMobile  && (
 
                 <Box
                   sx={{
@@ -119,8 +119,8 @@ const Header = () => {
                 variant="outlined"
                 sx={{ ml: 1, textTransform: 'none' }}
               >
-                <LogoutIcon sx={{ mr: 1 }} />
-                {t("Logout")}
+                <LogoutIcon />
+                {isMobile ? "" : t("Logout")}
               </Button>
             </>
           )}
