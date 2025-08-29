@@ -26,7 +26,7 @@ function QuizList() {
         const data = await quizzesApi.getAllUpComingQuizzes();
         dispatch(setQuizzes(data));
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch quizzes');
+        setError('Failed to fetch quizzes');
         console.error('Error fetching quizzes:', err);
       } finally {
         setLoading(false);

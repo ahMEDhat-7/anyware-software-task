@@ -20,7 +20,7 @@ function AnnouncementList() {
                 const data = await announcementsApi.getALLRecentAnnouncements();
                 dispatch(setAnnouncements(data));
             } catch (err) {
-                setError(err instanceof Error ? err.message : 'Failed to fetch announcements');
+                setError('Failed to fetch announcements');
                 console.error('Error fetching announcements:', err);
             } finally {
                 setLoading(false);

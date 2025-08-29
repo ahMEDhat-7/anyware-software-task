@@ -1,5 +1,7 @@
 import { Card, CardContent, Typography, Button, Box } from '@mui/material';
 import type { QuizType } from '../../utils/types';
+import { format, parseISO } from 'date-fns';
+
 
 function QuizItem({ quiz }: { quiz: QuizType }) {
     return (
@@ -12,11 +14,12 @@ function QuizItem({ quiz }: { quiz: QuizType }) {
                     <Typography variant="subtitle1" color="text.secondary">
                         Topic: {quiz.topic}
                     </Typography>
-                    <Typography variant="subtitle2" color="text.secondary">
+                    <Typography variant="subtitle1" color="text.secondary">
                         Course: {quiz.course}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Due To: {quiz.dueDate}
+                    <Typography variant="subtitle1" color="text.secondary">
+                        Due To: {format(parseISO(quiz.dueDate), 'yyyy-MM-dd HH:mm')} 
+
                     </Typography>
 
                     <Button
