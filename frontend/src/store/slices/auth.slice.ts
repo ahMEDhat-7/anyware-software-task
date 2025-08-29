@@ -5,6 +5,7 @@ import type { RootState } from '../store';
 
 const initialState: UserState = {
   user:{
+    id:"",
     username:'',
     avatar:''
   }

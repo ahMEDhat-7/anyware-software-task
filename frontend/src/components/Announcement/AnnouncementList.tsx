@@ -70,9 +70,9 @@ function AnnouncementList() {
                 <List sx={{
                     bgcolor: 'background.paper',
                 }}>
-                    {announcements.slice(0, 3).map((Announcement, index) => {
+                    {announcements.slice(0, 3).map((announcement, index) => {
                         return (
-                            <AnnouncementItem key={index} announcement={Announcement} />
+                            <AnnouncementItem key={index} announcement={announcement} />
                         );
                     })}
                 </List>

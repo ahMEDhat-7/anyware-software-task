@@ -7,6 +7,7 @@ export const userApi = {
     login: async () => {
         // const response = await axios.get(`/api/auth/login`);
         const response :UserType = {
+            id:"7",
             username:"Batman",
             avatar:"https://i.pinimg.com/736x/e0/89/07/e089076d1d0467b110c8de292c5c5637.jpg"
         };

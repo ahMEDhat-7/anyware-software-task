@@ -21,7 +21,7 @@ export const quizzesApi = {
     },
 
     // Create a new quiz
-    createQuiz: async (quiz: Omit<QuizType, '_id'>) => {
+    createQuiz: async (quiz: QuizType) => {
         const response = await axios.post(`/api/quizzes`, quiz);
         return response.data;
     },

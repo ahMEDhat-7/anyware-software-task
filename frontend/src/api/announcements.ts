@@ -20,7 +20,7 @@ export const announcementsApi = {
     },
 
     // Create a new Announcement
-    createAnnouncement: async (Announcement: Omit<AnnouncementType, '_id'>) => {
+    createAnnouncement: async (Announcement: AnnouncementType) => {
         const response = await axios.post(`/api/announcements`, Announcement);
         return response.data;
     },

@@ -10,6 +10,7 @@ export interface SideBarLinkType {
 
 
 export interface UserType{
+    id:string;
     username:string;
     avatar:string;
 }
@@ -18,7 +19,7 @@ export interface UserState {
     user: UserType
 }
 export interface QuizType {
-    _id: string;
+    id: string;
     title: string;
     topic: string;
     course: string;
@@ -30,6 +31,7 @@ export interface QuizState {
 }
 
 export interface AnnouncementType {
+    id:string;
     topic: string;
     content: string;
     author: string;
