@@ -20,7 +20,7 @@ function Announcement() {
         >
             
                 <List>
-                    {announcements.slice(0, 3).map((announcement, index) => (
+                    {announcements.map((announcement, index) => (
                         <AnnouncementItem key={index} announcement={announcement} />
                     ))}
                 </List>

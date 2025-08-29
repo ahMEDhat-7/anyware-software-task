@@ -40,7 +40,6 @@ function AnnouncementList() {
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
             }}
         >
             <Box sx={{ mb: 2 }}>
@@ -71,7 +70,7 @@ function AnnouncementList() {
                 </Box>
             ) : (
                 <List>
-                    {announcements.slice(0, 3).map((announcement, index) => (
+                    {announcements.slice(0, 4).map((announcement, index) => (
                         <AnnouncementItem key={index} announcement={announcement} />
                     ))}
                 </List>

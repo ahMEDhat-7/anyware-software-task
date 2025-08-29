@@ -18,9 +18,11 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectAnnouncements } from '../../store/slices/announcements.slice';
 import { selectUser } from '../../store/slices/auth.slice';
+import { selectQuizzes } from '../../store/slices/quizzes.Slice';
 
 const Header = () => {
   const announcements = useSelector(selectAnnouncements);
+  const quizzes = useSelector(selectQuizzes);
   const user = useSelector(selectUser);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -75,7 +77,7 @@ const Header = () => {
           </IconButton>
 
           <IconButton color="inherit" aria-label="messages">
-            <Badge badgeContent={1} color="error">
+            <Badge badgeContent={quizzes.length} color="error">
               <MailIcon />
             </Badge>
           </IconButton>

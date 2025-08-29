@@ -40,11 +40,9 @@ export class AnnouncementsController {
   
   @Get('recent')
   @ApiOperation({ summary: 'Get recent announcements' })
-  @ApiQuery({ name: 'limit', required: false, description: 'Number of announcements to return' })
   @ApiResponse({ status: 200, description: 'List of recent announcements' })
-  findRecent(@Query('limit') limit?: string) {
-    const limitNumber = limit ? parseInt(limit, 10) : 5;
-    return this.announcementsProvider.findRecent(limitNumber);
+  findRecent() {
+    return this.announcementsProvider.findRecent();
   }
 
   @Get(':id')

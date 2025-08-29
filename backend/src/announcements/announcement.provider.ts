@@ -10,11 +10,10 @@ export class AnnouncementsProvider {
         @InjectModel(Announcement.name)
         private announcementModel: Model<Announcement>
     ) { }
-    async findRecent(limit: number = 5): Promise<Announcement[]> {
+    async findRecent(): Promise<Announcement[]> {
         return this.announcementModel
             .find()
             .sort({ createdAt : -1 })
-            .limit(limit)
             .exec();
     }
 }
