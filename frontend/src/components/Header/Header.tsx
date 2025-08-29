@@ -17,13 +17,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectAnnouncements } from '../../store/slices/announcements.slice';
-import { selectQuizzes } from '../../store/slices/quizzes.Slice';
 import { selectUser } from '../../store/slices/auth.slice';
 
 const Header = () => {
   const announcements = useSelector(selectAnnouncements);
   const user = useSelector(selectUser);
-  const quizzes = useSelector(selectQuizzes);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -71,7 +69,7 @@ const Header = () => {
             </Box>
           )}
           <IconButton color="inherit" aria-label="notifications">
-            <Badge badgeContent={announcements.length + quizzes.length} color="error">
+            <Badge badgeContent={announcements.length} color="error">
               <NotificationsIcon />
             </Badge>
           </IconButton>
