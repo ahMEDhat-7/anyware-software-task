@@ -46,7 +46,6 @@ function QuizList() {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
       }}
     >
       <Box sx={{ mb: 2 }}>

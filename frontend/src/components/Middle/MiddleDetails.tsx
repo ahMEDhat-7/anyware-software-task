@@ -12,7 +12,7 @@ function MiddleDetails() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        color: "green",
+        color: "Highlight",
       }}
     >
       <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 'bold', mb: 2 }}>
@@ -28,9 +28,8 @@ function MiddleDetails() {
       </Typography>
 
       <Button
-        variant="outlined"
-        color="success"
-        href="#exam-tips"
+        variant="contained"
+        color="info"
         sx={{ fontWeight: 'bold' }}
       >
         View exam tips
