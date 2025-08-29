@@ -32,7 +32,7 @@ const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [lang, setLang] = useState<string>("en");
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleLang = () => {
     i18n.changeLanguage(lang);
@@ -43,7 +43,7 @@ const Header = () => {
     dispatch(removeUser())
     dispatch(clearAnnouncements())
     dispatch(clearQuizzes())
-    navigate('/'); 
+    navigate('/');
   };
   return (
     <AppBar
@@ -59,7 +59,7 @@ const Header = () => {
         <Box sx={{ display: 'flex', flexGrow: 1 }}>
           {!isMobile && (
             <Typography variant="h6" component="div">
-              Welcome, {user?.username}
+              {t("Welcome")}, {user?.username}
             </Typography>
           )}
 
@@ -69,56 +69,61 @@ const Header = () => {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Button onClick={handleLang}>{lang}</Button>
 
-          {!isMobile && (
+          {user && (
+            <>
 
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                backgroundColor: '#f0f0f0',
-                borderRadius: 2,
-                px: 1.5,
-                py: 0.5,
-                width: 200,
-              }}
-            >
-              <SearchIcon color="action" />
-              <InputBase
-                placeholder="Search"
-                fullWidth
-                sx={{ ml: 1 }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </Box>
+              {!isMobile && (
+
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: 2,
+                    px: 1.5,
+                    py: 0.5,
+                    width: 200,
+                  }}
+                >
+                  <SearchIcon color="action" />
+                  <InputBase
+                    placeholder="Search"
+                    fullWidth
+                    sx={{ ml: 1 }}
+                    inputProps={{ 'aria-label': 'search' }}
+                  />
+                </Box>
+              )}
+              <IconButton color="inherit" aria-label="notifications">
+                <Badge badgeContent={announcements.length} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+
+              <IconButton color="inherit" aria-label="messages">
+                <Badge badgeContent={quizzes.length} color="error">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+
+              <Link to="/profile">
+                <Avatar
+                  alt="User Avatar"
+                  src={user?.avatar}
+                  sx={{ width: 36, height: 36 }}
+                />
+              </Link>
+              <Button
+                onClick={handleLogout}
+                color="error"
+                variant="outlined"
+                sx={{ ml: 1, textTransform: 'none' }}
+              >
+                <LogoutIcon sx={{ mr: 1 }} />
+                {t("Logout")}
+              </Button>
+            </>
           )}
-          <IconButton color="inherit" aria-label="notifications">
-            <Badge badgeContent={announcements.length} color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-
-          <IconButton color="inherit" aria-label="messages">
-            <Badge badgeContent={quizzes.length} color="error">
-              <MailIcon />
-            </Badge>
-          </IconButton>
-
-          <Link to="/profile">
-            <Avatar
-              alt="User Avatar"
-              src={user?.avatar}
-              sx={{ width: 36, height: 36 }}
-            />
-          </Link>
-          <Button
-            onClick={handleLogout}
-            color="error"
-            variant="outlined"
-            sx={{ ml: 1, textTransform: 'none' }}
-          >
-            <LogoutIcon sx={{ mr: 1 }} />
-            Logout
-          </Button>
         </Box>
       </Toolbar>
     </AppBar>

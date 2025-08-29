@@ -44,10 +44,10 @@ function Home() {
       >
         <PersonIcon sx={{ fontSize: 48, color: '#2563eb', margin: '0 auto' }} />
         <Typography variant="h5" component="h1" fontWeight="bold" color="primary">
-          Login Required
+          {t("Login Required")}
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          Please log in to access this page
+          {t("Please log in to access this page")}
         </Typography>
         <Button
           variant="contained"
