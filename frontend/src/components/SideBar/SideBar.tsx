@@ -26,13 +26,11 @@ function SideBar() {
             <div className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
                 <h1 className={styles.logo}><Link to={'/'}>Coligo</Link></h1>
                 <nav className={styles.nav}>
-                    <ul>
                         <Stack spacing={2}>
                             {sideBarLinks.map((item, index) => (
                                 <SideBarLink key={index} link={item}/>
                             ))}
                         </Stack>
-                    </ul>
                 </nav>
             </div>
         </>

@@ -35,27 +35,26 @@ function AnnouncementList() {
             bgcolor: 'background.paper',
             borderRadius: 2,
             boxShadow: 1,
-            width: "73%",
             p: 2,
-            marginRight:3
+            marginRight: 3
         }}>
             <Box sx={{
                 display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
+                justifyContent:"space-between",
                 mb: 2
             }}>
-                <Typography variant="h6" component="h2" color='#1e1e99'>
-                    What's Due
-                </Typography>
+                <Box>
+                    <Typography variant="h6" component="h2" color='#1e1e99'>
+                        Announcments
+                    </Typography>
+                    <Typography variant="subtitle1" component="p" color='#1e1e99'>
+                        This Section for Announcments
+                    </Typography>
+                </Box>
                 <Button
                     variant="text"
-                    size="medium"
-                    sx={{
-                        color:"#",
-                        fontStyle:"bold"
-                    }}
-                >All
+                    size="large">
+                    All
                 </Button>
             </Box>
 

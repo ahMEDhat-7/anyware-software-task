@@ -35,24 +35,27 @@ function QuizList() {
             bgcolor: 'background.paper',
             borderRadius: 2,
             boxShadow: 1,
-             width:"25%",
             p: 2,
         }}>
             <Box sx={{
                 display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                mb: 2
             }}>
-                <Typography variant="h6" component="h2" color='#1e1e99'>
+                
+                <Box>
+                    <Typography variant="h6" component="h2" color='#1e1e99'>
                     What's Due
                 </Typography>
+                <Typography variant="subtitle1" component="p" color='#1e1e99'>
+                    This Section for Up-Coming Quizzes
+                </Typography>
+                </Box>
                 <Button
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                >
-                    All
+                    variant="text"
+                    size="medium"
+                    sx={{
+                        fontStyle:"bold"
+                    }}
+                >All
                 </Button>
             </Box>
 

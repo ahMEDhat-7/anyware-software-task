@@ -5,7 +5,7 @@ function AnnouncementItem({ announcement }: { announcement: AnnouncementType }) 
     return (
         <Card variant="outlined" sx={{marginBottom:1}}>
             <CardContent>
-                <Box display="flex" gap={1}>
+                <Box display="flex" gap={2}>
                     <Avatar src='https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'/>
                    <Box>
                      <Typography variant="subtitle1" component="h6" gutterBottom>

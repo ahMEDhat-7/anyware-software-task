@@ -11,8 +11,8 @@ function App() {
 
   return (
     <BrowserRouter>
-     <Header />
       <SideBar />
+        <Header />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path="/dashboard" element={<ProtectedDashboard />} />

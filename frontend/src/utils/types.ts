@@ -8,6 +8,15 @@ export interface SideBarLinkType {
     icon: JSX.Element;
 }
 
+
+export interface UserType{
+    username:string;
+    avatar:string;
+}
+
+export interface UserState {
+    user: UserType
+}
 export interface QuizType {
     _id: string;
     title: string;

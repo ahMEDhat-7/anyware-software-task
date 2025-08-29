@@ -10,8 +10,10 @@ function Dashboard() {
       justifyItems: "center",
       width: "75%",
       left: "25%",
-      top: "100px"
+      top:"10%"
     }}>
+         
+
 
       {/* Upper Middle Content */}
       <MiddleDetails />
@@ -24,10 +26,10 @@ function Dashboard() {
         p: 2,
         bgcolor: 'background.paper',
         borderRadius: 2,
-        boxShadow: 1
+        boxShadow: 1,
       }}>
         {/* Two Column Layout */}
-        <Grid container >
+        <Grid container spacing={3}  >
           {/* Left Content */}
           <AnnouncementList />
           {/* Right Content */}

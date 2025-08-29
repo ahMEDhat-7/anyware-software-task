@@ -1,10 +1,25 @@
 import { Stack, Button, Typography, Box } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from "react-router-dom";
+import { userApi } from "../api/auth";
+import { setUser } from "../store/slices/auth.slice";
+import { useDispatch } from "react-redux";
 
 function Home() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleLogin = () => {
+    const fetchUser = async () => {
+      try {
+        const data = await userApi.login();
+        dispatch(setUser(data));
+      } catch (err) {
+        console.error('Error fetching announcements:', err);
+      }
+    };
+
+    fetchUser();
     navigate('/dashboard');
   }
   return (
@@ -15,7 +30,7 @@ function Home() {
       justifyContent: 'center',
       bgcolor: '#f3f4f6'
     }}>
-      
+
       <Stack
         spacing={4}
         sx={{
