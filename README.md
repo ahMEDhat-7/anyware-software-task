@@ -1,4 +1,6 @@
-# Full Structure# Student Dashboard Backend
+>## **Note** : all screenshots in **/front/public/screenshots**
+
+### Full Structure Student Dashboard Backend
 
 A NestJS backend application with MongoDB for managing student quizzes and announcements.
 
