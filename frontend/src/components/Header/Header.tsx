@@ -11,19 +11,21 @@ import {
   useTheme,
   Button,
 } from '@mui/material';
-
+import LogoutIcon from '@mui/icons-material/Logout';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MailIcon from '@mui/icons-material/Mail';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectAnnouncements } from '../../store/slices/announcements.slice';
-import { selectUser } from '../../store/slices/auth.slice';
-import { selectQuizzes } from '../../store/slices/quizzes.Slice';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearAnnouncements, selectAnnouncements } from '../../store/slices/announcements.slice';
+import { removeUser, selectUser } from '../../store/slices/auth.slice';
+import { clearQuizzes, selectQuizzes } from '../../store/slices/quizzes.Slice';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const announcements = useSelector(selectAnnouncements);
   const quizzes = useSelector(selectQuizzes);
   const user = useSelector(selectUser);
@@ -37,6 +39,12 @@ const Header = () => {
     lang === "en" ? setLang("ar") : setLang("en");
   }
 
+  const handleLogout = () => {
+    dispatch(removeUser())
+    dispatch(clearAnnouncements())
+    dispatch(clearQuizzes())
+    navigate('/'); 
+  };
   return (
     <AppBar
       color="inherit"
@@ -51,7 +59,7 @@ const Header = () => {
         <Box sx={{ display: 'flex', flexGrow: 1 }}>
           {!isMobile && (
             <Typography variant="h6" component="div">
-              Welcome, {user.username}
+              Welcome, {user?.username}
             </Typography>
           )}
 
@@ -98,10 +106,19 @@ const Header = () => {
           <Link to="/profile">
             <Avatar
               alt="User Avatar"
-              src={user.avatar}
+              src={user?.avatar}
               sx={{ width: 36, height: 36 }}
             />
           </Link>
+          <Button
+            onClick={handleLogout}
+            color="error"
+            variant="outlined"
+            sx={{ ml: 1, textTransform: 'none' }}
+          >
+            <LogoutIcon sx={{ mr: 1 }} />
+            Logout
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>

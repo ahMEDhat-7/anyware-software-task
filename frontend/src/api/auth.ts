@@ -1,4 +1,3 @@
-import axios from "axios"
 import type { UserType } from "../utils/types";
 
 
@@ -15,7 +14,8 @@ export const userApi = {
     },
 
     logout: async () => {
-        const response = await axios.get(`/api/auth/logout`);
+        // const response = await axios.get(`/api/auth/logout`);
+        const response = null;
         return response;
     },
 

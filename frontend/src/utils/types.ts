@@ -16,7 +16,7 @@ export interface UserType{
 }
 
 export interface UserState {
-    user: UserType
+    user: UserType | null
 }
 export interface QuizType {
     id: string;
