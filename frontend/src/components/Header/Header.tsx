@@ -32,7 +32,7 @@ const Header = () => {
       color="inherit"
       sx={{
         zIndex: (theme) => theme.zIndex.drawer + 1,
-        width: { xs: '100%', md: '75%' }, 
+        width: { sm: '75%', md: '75%' }, 
         ml: { xs: 0, md: '25%' },
         boxShadow: 1,
       }}

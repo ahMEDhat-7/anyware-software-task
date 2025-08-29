@@ -9,18 +9,16 @@ function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    const fetchUser = async () => {
+  const handleLogin = async() => {
+    
       try {
         const data = await userApi.login();
         dispatch(setUser(data));
+        navigate('/dashboard');
       } catch (err) {
         console.error('Error fetching announcements:', err);
       }
-    };
-
-    fetchUser();
-    navigate('/dashboard');
+    
   }
   return (
     <Box sx={{

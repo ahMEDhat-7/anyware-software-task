@@ -27,6 +27,7 @@ export const {
 } = authSlice.actions;
 
 export const selectUser = (state: RootState) => state.auth.user;
+export const selectUserAuthenticated = (state: RootState) => state.auth.user.id.length === 0  ? null: state.auth.user ;
 
 
 export default authSlice.reducer;
