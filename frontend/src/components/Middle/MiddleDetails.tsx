@@ -18,7 +18,7 @@ function MiddleDetails() {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         color: "Highlight",
-                direction: isArabic ? 'rtl' : 'ltr'
+        direction: isArabic ? 'rtl' : 'ltr'
 
       }}
     >
