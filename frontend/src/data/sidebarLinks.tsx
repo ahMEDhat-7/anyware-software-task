@@ -5,7 +5,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import SchoolIcon from '@mui/icons-material/School';
 import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
 import CampaignIcon from '@mui/icons-material/Campaign';
-import type { SideBarLinkType } from '../../utils/types';
+import type { SideBarLinkType } from '../utils/types';
 
 
 

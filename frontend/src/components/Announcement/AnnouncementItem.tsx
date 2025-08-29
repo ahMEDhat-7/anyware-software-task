@@ -5,13 +5,13 @@ function AnnouncementItem({ announcement }: { announcement: AnnouncementType }) 
     return (
         <Card variant="outlined" sx={{marginBottom:1}}>
             <CardContent>
-                <Box display="flex" gap={2}>
+                <Box display="flex" gap={3}>
                     <Avatar src='https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'/>
-                   <Box>
+                   <Box marginRight={4}>
                      <Typography variant="subtitle1" component="h6" gutterBottom>
                         {announcement.author}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
+                    <Typography variant="subtitle2" color="text.secondary">
                         {announcement.topic}
                     </Typography>
                    </Box>

@@ -4,6 +4,7 @@ import { Box, Typography, List, Button, CircularProgress } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { announcementsApi } from '../../api/announcements';
 import AnnouncementItem from './AnnouncementItem';
+import { Link } from 'react-router-dom';
 
 function AnnouncementList() {
     const dispatch = useDispatch();
@@ -52,9 +53,11 @@ function AnnouncementList() {
                             This Section for Announcements
                         </Typography>
                     </Box>
-                    <Button variant="text" size="small">
-                        All
-                    </Button>
+                    <Link to="/announcements">
+                        <Button variant="text" size="small">
+                            All
+                        </Button>
+                    </Link>
                 </Box>
             </Box>
 

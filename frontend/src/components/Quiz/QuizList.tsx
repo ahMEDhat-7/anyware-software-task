@@ -10,6 +10,7 @@ import {
 import { useState, useEffect } from 'react';
 import { quizzesApi } from '../../api/quizzes';
 import QuizItem from './QuizItem';
+import { Link } from 'react-router-dom';
 
 function QuizList() {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function QuizList() {
         bgcolor: 'background.paper',
         borderRadius: 2,
         boxShadow: 1,
-        p: 2,
+        p: 1,
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -58,9 +59,11 @@ function QuizList() {
               This Section for Upcoming Quizzes
             </Typography>
           </Box>
-          <Button variant="text" size="small" sx={{ fontWeight: 'bold' }}>
-            All
-          </Button>
+           <Link to="/quizzes">
+                        <Button variant="text" size="small">
+                            All
+                        </Button>
+                    </Link>
         </Box>
       </Box>
 

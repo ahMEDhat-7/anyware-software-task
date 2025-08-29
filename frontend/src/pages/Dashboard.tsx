@@ -24,7 +24,7 @@ function Dashboard() {
         sx={{
           display: 'grid',
           gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' },
-          gap: 3,
+          gap: 2,
           mt: 3
         }}
       >
